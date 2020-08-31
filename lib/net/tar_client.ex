@@ -3,6 +3,8 @@ defmodule Tex.Net.TarClient do
 
   plug Tesla.Middleware.BaseUrl, "https://repo.hex.pm/tarballs/"
 
+  @tar_header <<86, 69, 82, 83, 73, 79, 78>>
+
   def download_tarball(name, version) do
     constructed_name = "#{name}-#{version}.tar"
     get(constructed_name)
@@ -13,6 +15,9 @@ defmodule Tex.Net.TarClient do
   end
 
   defp validate_download(body) do
-    {:ok, body}
+    case body do
+      <<@tar_header, _rest :: binary>> -> {:ok, body}
+      _ -> {:error, "Failed to download tarball, bad header"}
+    end
   end
 end
