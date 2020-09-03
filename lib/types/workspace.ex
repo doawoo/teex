@@ -9,4 +9,6 @@ defmodule Tex.Types.Workspace do
     field :library_path, String.t(), enforce: true, default: ""
     field :installed_libraries, list(Library.t()), enforce: true, default: []
   end
+
+  builder()
 end
