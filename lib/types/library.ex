@@ -4,8 +4,10 @@ defmodule Tex.Types.Library do
 
   typedstruct do
     field :name, String.t(), enforce: true, default: ""
-    field :tar_uri, URI.t(), enforce: true, default: %URI{}
-    field :install_path, String.t(), enforce: true, default: ""
+    field :version, String.t(), enforce: true, default: ""
     field :checksum, String.t(), enforce: true, default: ""
+    field :tarball, binary(), enforce: true, default: nil
   end
+
+  builder()
 end
