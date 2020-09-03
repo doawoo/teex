@@ -6,7 +6,7 @@ defmodule Tex.Types.Workspace do
 
   typedstruct do
     field :name, String.t(), enforce: true, default: ""
-    field :library_path, String.t(), enforce: true, default: ""
+    field :path, String.t(), enforce: true, default: ""
     field :installed_libraries, list(Library.t()), enforce: true, default: []
   end
 

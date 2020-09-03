@@ -12,7 +12,7 @@ defmodule Tex.Pipeline.Install do
   end
 
   def run(%Library{} = lib, %Workspace{installed_libraries: current_libs} = target_workspace) do
-    if !File.dir?(target_workspace.library_path) do
+    if !File.dir?(target_workspace.path) do
       {:error, Error.build(type: :workspace, details: "Workspace directory does not exist")}
     else
       with {:ok, tar_path} <- save_outer_tarball(lib),
@@ -50,7 +50,7 @@ defmodule Tex.Pipeline.Install do
   end
 
   def install_inner_tarball(%Workspace{} = workspace, %Library{} = lib, tar_data) do
-    lib_dir = Path.join(workspace.library_path, lib.name)
+    lib_dir = Path.join(workspace.path, lib.name)
     |> Path.join(lib.version)
     file_path = Path.join(lib_dir, "contents.tar.gz")
 
@@ -67,7 +67,7 @@ defmodule Tex.Pipeline.Install do
   defp install_and_compile(%Workspace{} = workspace, %Library{} = lib) do
     Logger.info("Installing #{lib.name} @ #{lib.version} into workspace: #{workspace.name}")
 
-    dir_cmd = "cd #{workspace.library_path} && cd #{lib.name} && cd #{lib.version} && "
+    dir_cmd = "cd #{workspace.path} && cd #{lib.name} && cd #{lib.version} && "
     deps_cmd = dir_cmd <> "mix deps.get && mix deps.compile" |> to_charlist()
     compile_cmd = dir_cmd <> "mix compile" |> to_charlist()
 

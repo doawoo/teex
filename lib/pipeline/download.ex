@@ -5,6 +5,9 @@ defmodule Tex.Pipeline.Download do
   alias Tex.Net.ReleasesClient
   alias Tex.Net.TarClient
 
+  @spec run(Tex.Types.Library.t()) ::
+          {:error, Error.t()}
+          | {:ok, Library.t()}
   def run(%Library{} = lib) do
     with {:ok, tar_data} <- do_tarball_download(lib),
      {:ok, checksum_string} <- do_get_checksum(lib),
