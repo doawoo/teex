@@ -9,7 +9,7 @@ defmodule Tex.Util.StructBuilder do
     quote generated: true do
       def build(attrs) do
         filtered = Enum.filter(attrs, fn {_k, v} -> !is_nil(v) end)
-        {:ok, struct(unquote(__CALLER__.module), filtered)}
+        struct(unquote(__CALLER__.module), filtered)
       end
     end
   end
