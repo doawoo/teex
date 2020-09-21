@@ -27,6 +27,8 @@ defmodule Mix.Tasks.Tex.Workspace do
     Logger.info("Workspace created!")
     Logger.info("Name: #{name}")
     Logger.info("Path: #{full_path}")
+  rescue
+    _e -> Logger.error("Failed to create or save workspace configuration. This might be a permissions error!")
   end
 
   def run(["destroy", name]) do
@@ -52,7 +54,9 @@ defmodule Mix.Tasks.Tex.Workspace do
   end
 
   def run(_) do
-    IO.puts("Not sure what you mean!")
+    IO.puts("Not sure what you mean!\n")
+    IO.puts("\tUsage:\n\tmix tex.workspace create [new_workspace_name]")
+    IO.puts("\tmix tex.workspace destroy [workspace_name]")
     :ok
   end
 end
