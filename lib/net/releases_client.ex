@@ -4,6 +4,7 @@ defmodule Tex.Net.ReleasesClient do
   plug Tesla.Middleware.BaseUrl, "https://hex.pm/api/packages/"
   plug Tesla.Middleware.Headers, ["User-Agent": "TexClient"]
 
+  @spec get_release_info(binary, binary) :: {:error, any} | map
   def get_release_info(package, version) when is_binary(package) and is_binary(version) do
     constructed_path = "#{package}/releases/#{version}"
     get(constructed_path)

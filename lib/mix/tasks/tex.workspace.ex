@@ -1,4 +1,4 @@
-defmodule Mix.Tasks.Tex.Create do
+defmodule Mix.Tasks.Tex.Workspace do
   use Mix.Task
 
   alias Tex.Util
@@ -6,7 +6,7 @@ defmodule Mix.Tasks.Tex.Create do
 
   require Logger
 
-  def run(["workspace", name]) do
+  def run(["create", name]) do
     full_path = Util.compute_workspace_path(name)
 
     if File.dir?(full_path) do
@@ -27,6 +27,28 @@ defmodule Mix.Tasks.Tex.Create do
     Logger.info("Workspace created!")
     Logger.info("Name: #{name}")
     Logger.info("Path: #{full_path}")
+  end
+
+  def run(["destroy", name]) do
+    full_path = Util.compute_workspace_path(name)
+
+    if !File.dir?(full_path) do
+      Logger.warn("Workspace #{name} does not exist!")
+      exit(0)
+    end
+
+    Logger.info("WARNING: This will delete the directory: #{full_path}!")
+
+    confirmation = IO.gets("Destroy Workspace? [y/n] ")
+    |> String.downcase()
+    |> String.trim()
+    cond do
+      String.downcase(confirmation) == "y" ->
+        File.rm_rf!(full_path)
+        Logger.info("Workspace destroyed!")
+      true ->
+        Logger.info("Not destroying workspace, goodbye!")
+    end
   end
 
   def run(_) do
