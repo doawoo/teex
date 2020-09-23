@@ -9,8 +9,13 @@ defmodule Tex.MixProject do
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       description: description(),
-      package: package()
+      package: package(),
+      escript: escript()
     ]
+  end
+
+  defp escript() do
+    [main_module: Tex]
   end
 
   defp package() do

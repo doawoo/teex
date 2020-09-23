@@ -3,7 +3,6 @@ defmodule Mix.Tasks.Tex.Install do
 
   alias Tex.Types.Library
   alias Tex.Types.Workspace
-  alias Tex.Types.Error
 
   alias Tex.Pipeline.Download
   alias Tex.Pipeline.Install
@@ -52,6 +51,6 @@ defmodule Mix.Tasks.Tex.Install do
 
     Logger.info("Finished installing!")
   rescue
-    _e -> Logger.error("Failed to download or install the package, does that package and version exist?")
+    e -> Logger.error("Failed to download or install the package, does that package and version exist?\n#{IO.inspect(e)}")
   end
 end

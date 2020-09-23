@@ -5,6 +5,10 @@ defmodule Tex do
   alias Tex.Types.Workspace
   alias Tex.Types.Library
 
+  def main(args) do
+    IO.inspect(args)
+  end
+
   def workspace(name) when is_binary(name) do
     workspace_name = Util.clean_workspace_name(name)
     full_path = Util.compute_workspace_path(workspace_name)
