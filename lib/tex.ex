@@ -6,10 +6,11 @@ defmodule Tex do
   alias Tex.Types.Library
 
   def main(args) do
-    case List.first(args) do
-      "init" -> Mix.Tasks.Tex.Init.run(args)
-      "install" -> Mix.Tasks.Tex.Install.run(args)
-      "workspace" -> Mix.Tasks.Tex.Workspace.run(args)
+    {cmd, rest} = List.pop_at(args, 0)
+    case cmd do
+      "init" -> Mix.Tasks.Tex.Init.run(rest)
+      "install" -> Mix.Tasks.Tex.Install.run(rest)
+      "workspace" -> Mix.Tasks.Tex.Workspace.run(rest)
       _ -> IO.puts("Not sure what you mean, try one of these commands: ['init', 'install', 'workspace']")
     end
   end
