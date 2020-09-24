@@ -6,7 +6,12 @@ defmodule Tex do
   alias Tex.Types.Library
 
   def main(args) do
-    IO.inspect(args)
+    case List.first(args) do
+      "init" -> Mix.Tasks.Tex.Init.run(args)
+      "install" -> Mix.Tasks.Tex.Install.run(args)
+      "workspace" -> Mix.Tasks.Tex.Workspace.run(args)
+      _ -> IO.puts("Not sure what you mean, try one of these commands: ['init', 'install', 'workspace']")
+    end
   end
 
   def workspace(name) when is_binary(name) do

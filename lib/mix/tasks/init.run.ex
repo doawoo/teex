@@ -3,16 +3,17 @@ defmodule Mix.Tasks.Tex.Init do
 
   require Logger
 
+  @escript_util File.read!("lib/util/escript.ex")
+  @modules_to_shim inspect(["Tex", "Tex.Types.Library", "Tex.Types.Workspace", "Tex.Types.Error", "Tex.Util", "Tex.Util.Configuration"])
+
   defp init_file do
     """
-    mix_arch_path = Mix.path_for(:archives)
-    |> Path.join("tex-*")
-    |> Path.wildcard()
-    |> List.first()
+    #{@escript_util}
 
-    tex_base_name = Path.basename(mix_arch_path)
-    ebin_path = Path.join(mix_arch_path, tex_base_name) |> Path.join("ebin")
-    Code.append_path(ebin_path)
+    Mix.path_for(:escripts)
+    |> Path.join("tex.escript")
+    |> Tex.Util.Escript.extract_modules(#{@modules_to_shim})
+    |> Tex.Util.Escript.load_module_object_code()
 
     IO.puts("Tex has been loaded into your IEx session!")
     """
