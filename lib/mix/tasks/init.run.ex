@@ -11,7 +11,7 @@ defmodule Mix.Tasks.Tex.Init do
     #{@escript_util}
 
     Mix.path_for(:escripts)
-    |> Path.join("tex.escript")
+    |> Path.join("tex")
     |> Tex.Util.Escript.extract_modules(#{@modules_to_shim})
     |> Tex.Util.Escript.load_module_object_code()
 
