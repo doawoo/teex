@@ -23,3 +23,5 @@ erl_crash.dump
 tex-*.tar
 
 .elixir_ls/
+
+./tex

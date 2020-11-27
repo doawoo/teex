@@ -2,19 +2,18 @@ defmodule Mix.Tasks.Tex.Workspace do
   use Mix.Task
 
   alias Tex.Util
+  alias Tex.Util.Messages
   alias Tex.Types.Workspace
-
-  require Logger
 
   def run(["create", name]) do
     full_path = Util.compute_workspace_path(name)
 
     if File.dir?(full_path) do
-      Logger.warn("Workspace #{name} already exists! Not creating it again.")
+      Messages.warning("Workspace #{name} already exists! Not creating it again.")
       exit(0)
     end
 
-    Logger.info("Creating a new workspace: #{name}")
+    Messages.wrench("Creating a new workspace: #{name}")
 
     File.mkdir_p!(full_path)
     workspace = Workspace.build(
@@ -24,22 +23,22 @@ defmodule Mix.Tasks.Tex.Workspace do
 
     {:ok, _} = Util.Configuration.save_workspace(workspace)
 
-    Logger.info("Workspace created!")
-    Logger.info("Name: #{name}")
-    Logger.info("Path: #{full_path}")
+    Messages.sparkle("Workspace created!")
+    Messages.info("Name: #{name}")
+    Messages.info("Path: #{full_path}")
   rescue
-    _e -> Logger.error("Failed to create or save workspace configuration. This might be a permissions error!")
+    _e -> Messages.error("Failed to create or save workspace configuration. This might be a permissions error!")
   end
 
   def run(["destroy", name]) do
     full_path = Util.compute_workspace_path(name)
 
     if !File.dir?(full_path) do
-      Logger.warn("Workspace #{name} does not exist!")
+      Messages.warning("Workspace #{name} does not exist!")
       exit(0)
     end
 
-    Logger.info("WARNING: This will delete the directory: #{full_path}!")
+    Messages.warning("WARNING: This will delete the directory: #{full_path}!")
 
     confirmation = IO.gets("Destroy Workspace? [y/n] ")
     |> String.downcase()
@@ -47,9 +46,9 @@ defmodule Mix.Tasks.Tex.Workspace do
     cond do
       String.downcase(confirmation) == "y" ->
         File.rm_rf!(full_path)
-        Logger.info("Workspace destroyed!")
+        Messages.info("Workspace destroyed!")
       true ->
-        Logger.info("Not destroying workspace, goodbye!")
+        Messages.info("Not destroying workspace, goodbye!")
     end
   end
 

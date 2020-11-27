@@ -8,9 +8,8 @@ defmodule Mix.Tasks.Tex.Install do
   alias Tex.Pipeline.Install
 
   alias Tex.Util
+  alias Tex.Util.Messages
   alias Tex.Util.Configuration
-
-  require Logger
 
   def run(args) do
     OptionParser.parse!(args, strict: [workspace: :string, name: :string, version: :string])
@@ -23,9 +22,9 @@ defmodule Mix.Tasks.Tex.Install do
   end
 
   defp kickoff_install(workspace_name, name, version) do
-    Logger.info("Going to install Hex library #{name}@#{version} into workspace: #{workspace_name}")
+    Messages.info("Going to install Hex library #{name}@#{version} into workspace: #{workspace_name}")
 
-    Logger.info("Downloading from hex...")
+    Messages.download("Downloading from hex...")
 
     {:ok, lib} = Library.build(
       name: name,
@@ -36,7 +35,7 @@ defmodule Mix.Tasks.Tex.Install do
     full_path = Util.compute_workspace_path(workspace_name)
 
     if !File.dir?(full_path) do
-      Logger.error("Workspace #{workspace_name} does not exist!")
+      Messages.error("Workspace #{workspace_name} does not exist!")
       exit(-1)
     end
 
@@ -49,8 +48,8 @@ defmodule Mix.Tasks.Tex.Install do
 
     {:ok, _} = Configuration.save_workspace(workspace)
 
-    Logger.info("Finished installing!")
+    Messages.sparkle("Finished installing!")
   rescue
-    e -> Logger.error("Failed to download or install the package, does that package and version exist?\n#{IO.inspect(e)}")
+    e -> Messages.error("Failed to download or install the package, does that package and version exist?\n#{IO.inspect(e)}")
   end
 end

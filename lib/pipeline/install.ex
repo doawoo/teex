@@ -3,10 +3,11 @@ defmodule Tex.Pipeline.Install do
   alias Tex.Types.Workspace
   alias Tex.Types.Error
 
+  alias Tex.Util.Messages
   alias Tex.Util.Tar
 
-  require Logger
-
+  @spec run(Tex.Types.Library.t(), any) ::
+          {:error, any} | {:ok, %{:__struct__ => atom, optional(atom) => any}}
   def run(%Library{tarball: nil}, _) do
     {:error, Error.build(type: :install, details: "Empty tarball passed into Install.run/2 pipeline")}
   end
@@ -40,7 +41,7 @@ defmodule Tex.Pipeline.Install do
   end
 
   defp extract_inner_tarball(tar_location) do
-    Logger.info("Extracting inner tarball from outter tarball")
+    Messages.outbox("Extracting inner tarball from outter tarball")
     with {:ok, file_list} <- Tar.extract_tar_to_memory(tar_location),
     {'contents.tar.gz', compressed_content} <- Enum.find(file_list, fn {file, _} -> file == 'contents.tar.gz' end) do
       {:ok, compressed_content}
@@ -65,16 +66,16 @@ defmodule Tex.Pipeline.Install do
   end
 
   defp install_and_compile(%Workspace{} = workspace, %Library{} = lib) do
-    Logger.info("Installing #{lib.name} @ #{lib.version} into workspace: #{workspace.name}")
+    Messages.info("Installing #{lib.name} @ #{lib.version} into workspace: #{workspace.name}")
 
     dir_cmd = "cd #{workspace.path} && cd #{lib.name} && cd #{lib.version} && "
     deps_cmd = dir_cmd <> "mix deps.get && mix deps.compile" |> to_charlist()
     compile_cmd = dir_cmd <> "mix compile" |> to_charlist()
 
-    Logger.info("Fetching and compiling deps for #{lib.name} @ #{lib.version}")
+    Messages.package("Fetching and compiling deps for #{lib.name} @ #{lib.version}")
     :os.cmd(deps_cmd)
 
-    Logger.info("Compiling #{lib.name} @ #{lib.version}")
+    Messages.tools("Compiling #{lib.name} @ #{lib.version}")
     :os.cmd(compile_cmd)
 
     :ok

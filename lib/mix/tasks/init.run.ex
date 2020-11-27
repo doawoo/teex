@@ -1,7 +1,7 @@
 defmodule Mix.Tasks.Tex.Init do
   use Mix.Task
 
-  require Logger
+  alias Tex.Util.Messages
 
   @escript_util File.read!("lib/util/escript.ex")
   @modules_to_shim inspect(["Tex", "Tex.Types.Library", "Tex.Types.Workspace", "Tex.Types.Error", "Tex.Util", "Tex.Util.Configuration"])
@@ -24,8 +24,8 @@ defmodule Mix.Tasks.Tex.Init do
     full_path = Path.join(home, ".tex.exs")
     File.write!(full_path, init_file())
 
-    IO.puts("\nInstalled ~/.tex.exs")
-    IO.puts("\nIMPORTANT! Add the following to the top of your ~/.iex.exs:\n")
-    IO.puts("c \"#{full_path}\"\n")
+    Messages.sparkle("Installed ~/.tex.exs")
+    Messages.point("IMPORTANT! Add the following to the top of your ~/.iex.exs:")
+    Messages.point("c \"#{full_path}\"")
   end
 end
