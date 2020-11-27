@@ -66,17 +66,16 @@ defmodule Tex.Pipeline.Install do
   end
 
   defp install_and_compile(%Workspace{} = workspace, %Library{} = lib) do
-    Messages.info("Installing #{lib.name} @ #{lib.version} into workspace: #{workspace.name}")
+    Messages.wrench("Installing #{lib.name} @ #{lib.version} into workspace: #{workspace.name}")
 
-    dir_cmd = "cd #{workspace.path} && cd #{lib.name} && cd #{lib.version} && "
-    deps_cmd = dir_cmd <> "mix deps.get && mix deps.compile" |> to_charlist()
-    compile_cmd = dir_cmd <> "mix compile" |> to_charlist()
+    lib_path = Path.join([workspace.path, lib.name, lib.version])
 
     Messages.package("Fetching and compiling deps for #{lib.name} @ #{lib.version}")
-    :os.cmd(deps_cmd)
+    System.cmd("mix", ["deps.get"], cd: lib_path, stderr_to_stdout: true)
+    System.cmd("mix", ["deps.compile"], cd: lib_path, stderr_to_stdout: true)
 
     Messages.tools("Compiling #{lib.name} @ #{lib.version}")
-    :os.cmd(compile_cmd)
+    System.cmd("mix", ["compile"], cd: lib_path, stderr_to_stdout: true)
 
     :ok
   end
