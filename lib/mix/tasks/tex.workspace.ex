@@ -40,7 +40,7 @@ defmodule Mix.Tasks.Tex.Workspace do
 
     Messages.warning("WARNING: This will delete the directory: #{full_path}!")
 
-    confirmation = IO.gets("Destroy Workspace? [y/n] ")
+    confirmation = IO.gets("\n\tDestroy Workspace? [y/n] ")
     |> String.downcase()
     |> String.trim()
     cond do

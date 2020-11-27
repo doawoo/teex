@@ -50,6 +50,6 @@ defmodule Mix.Tasks.Tex.Install do
 
     Messages.sparkle("Finished installing!")
   rescue
-    e -> Messages.error("Failed to download or install the package, does that package and version exist?\n#{IO.inspect(e)}")
+    e -> Messages.error("Failed to download or install the package, does that package and version exist?\n#{inspect(e)}")
   end
 end

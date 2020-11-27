@@ -7,6 +7,7 @@ defmodule Tex.Types.Library do
     field :version, String.t(), enforce: true, default: ""
     field :checksum, String.t(), enforce: true, default: ""
     field :tarball, binary(), enforce: true, default: nil
+    field :deps, list({String.t(), String.t()}), enforce: true, default: nil
   end
 
   builder()

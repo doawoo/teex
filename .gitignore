@@ -24,4 +24,4 @@ tex-*.tar
 
 .elixir_ls/
 
-./tex
+tex

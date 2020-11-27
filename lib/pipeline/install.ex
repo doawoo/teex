@@ -6,8 +6,6 @@ defmodule Tex.Pipeline.Install do
   alias Tex.Util.Messages
   alias Tex.Util.Tar
 
-  @spec run(Tex.Types.Library.t(), any) ::
-          {:error, any} | {:ok, %{:__struct__ => atom, optional(atom) => any}}
   def run(%Library{tarball: nil}, _) do
     {:error, Error.build(type: :install, details: "Empty tarball passed into Install.run/2 pipeline")}
   end
