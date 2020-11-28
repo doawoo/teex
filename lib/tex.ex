@@ -32,12 +32,26 @@ defmodule Tex do
 
   defp load_code_paths(%Workspace{} = workspace) do
     Enum.each(workspace.installed_libraries, fn %Library{} = lib ->
+      load_deps(workspace, lib)
+
       ebin_path =
         Path.join(workspace.path, lib.name)
         |> Path.join(lib.version)
         |> Path.join("_build/dev/lib/#{lib.name}/ebin")
       Code.append_path(ebin_path)
-      IO.puts(:stderr, "Loaded: #{lib.name}@#{lib.version}")
+      IO.puts(:stderr, "Loaded library: #{lib.name}@#{lib.version}")
+    end)
+  end
+
+  defp load_deps(workspace, lib) do
+    Enum.each(lib.deps, fn {name, version} ->
+      ebin_path =
+        Path.join(workspace.path, lib.name)
+        |> Path.join(lib.version)
+        |> Path.join("_build/dev/lib/#{name}/ebin")
+
+      Code.append_path(ebin_path)
+      IO.puts(:stderr, "Loaded dependency: #{name}@#{version}")
     end)
   end
 end
