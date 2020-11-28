@@ -15,7 +15,7 @@ defmodule Mix.Tasks.Tex.Init do
     |> Tex.Util.Escript.extract_modules(#{@modules_to_shim})
     |> Tex.Util.Escript.load_module_object_code()
 
-    IO.puts("Tex has been loaded into your IEx session!")
+    IO.puts(:stderr, "Tex has been loaded into your IEx session!")
     """
   end
 

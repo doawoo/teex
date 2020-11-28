@@ -17,7 +17,7 @@ defmodule Mix.Tasks.Tex.Install do
       {[workspace: workspace_name], [name, version]} -> kickoff_install(workspace_name, name, version)
       _ ->
         IO.puts("Not sure what you mean!\n")
-        IO.puts("\tUsage:\n\tmix tex.install jason 1.2.1 --workspace [target_workspace name]")
+        IO.puts("\tUsage:\n\ttex install jason 1.2.1 --workspace [target_workspace name]")
     end
   end
 

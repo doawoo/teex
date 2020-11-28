@@ -37,7 +37,7 @@ defmodule Tex do
         |> Path.join(lib.version)
         |> Path.join("_build/dev/lib/#{lib.name}/ebin")
       Code.append_path(ebin_path)
-      IO.puts("Loaded: #{lib.name}@#{lib.version}")
+      IO.puts(:stderr, "Loaded: #{lib.name}@#{lib.version}")
     end)
   end
 end
