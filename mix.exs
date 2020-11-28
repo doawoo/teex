@@ -4,7 +4,7 @@ defmodule Tex.MixProject do
   def project do
     [
       app: :tex,
-      version: "0.3.1",
+      version: "0.3.2",
       elixir: "~> 1.10",
       source_url: "github.com/doawoo/tex",
       start_permanent: Mix.env() == :prod,
