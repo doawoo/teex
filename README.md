@@ -1,7 +1,7 @@
 # Tex
-> A way to create re-usable Hex package workspaces WITHOUT creating a mix project!'
+#### A way to create re-usable Hex package workspaces WITHOUT creating a mix project!
 
-**HEY** This is a very hacky and experimental tool that solves a weird problem. I really wanted to be able to use Elixir like python all over my system environment. But in order to use any of the Hex packages, I needed a proper Mix project. Tex negate that by shimming into your IEx sessions, and injecting the code paths of libraries you install inside your workspaces.
+**HEY THERE!** This is a very hacky and experimental tool that solves a weird problem. I really wanted to be able to use Elixir like python all over my system environment. But in order to use any of the Hex packages, I needed a proper Mix project. Tex negates that by shimming into your IEx sessions, and injecting the code paths of libraries you install inside your workspaces.
 
 This has no tests yet. This is basically in-dev. Here be dragons!
 
