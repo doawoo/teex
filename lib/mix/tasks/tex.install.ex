@@ -44,12 +44,22 @@ defmodule Mix.Tasks.Tex.Install do
       path: full_path
     ) |> Configuration.load_workspace()
 
-    {:ok, workspace} = Install.run(lib, workspace)
+    if already_installed(workspace, lib) do
+      Messages.warning("Library '#{lib.name}' is already installed! Won't install it again!")
+    else
+      {:ok, workspace} = Install.run(lib, workspace)
 
-    {:ok, _} = Configuration.save_workspace(workspace)
+      {:ok, _} = Configuration.save_workspace(workspace)
 
-    Messages.sparkle("Finished installing!")
+      Messages.sparkle("Finished installing!")
+    end
   rescue
     e -> Messages.error("Failed to download or install the package, does that package and version exist?\n#{inspect(e)}")
+  end
+
+  defp already_installed(workspace, lib) do
+    Enum.find(workspace.installed_libraries, nil, fn installed ->
+      installed.name == lib.name
+    end) != nil
   end
 end
