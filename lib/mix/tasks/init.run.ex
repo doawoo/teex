@@ -25,7 +25,7 @@ defmodule Mix.Tasks.Tex.Init do
     File.write!(full_path, init_file())
 
     Messages.sparkle("Installed ~/.tex.exs")
-    Messages.point("IMPORTANT! Add the following to the top of your ~/.iex.exs:")
-    Messages.point("c \"#{full_path}\"")
+    Messages.lights("IMPORTANT! Add the following to the top of your ~/.iex.exs:")
+    Messages.lights("c \"#{full_path}\"")
   end
 end

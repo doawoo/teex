@@ -24,7 +24,7 @@ defmodule Mix.Tasks.Tex.Install do
   defp kickoff_install(workspace_name, name, version) do
     Messages.info("Going to install Hex library #{name}@#{version} into workspace: #{workspace_name}")
 
-    Messages.download("Downloading from hex...")
+    Messages.inbox("Downloading from hex...")
 
     {:ok, lib} = Library.build(
       name: name,

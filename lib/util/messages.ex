@@ -23,8 +23,8 @@ defmodule Tex.Util.Messages do
     _ = Logger.info("✨ #{message} ✨")
   end
 
-  @spec point(binary) :: :ok
-  def point(message) when is_binary(message) do
+  @spec lights(binary) :: :ok
+  def lights(message) when is_binary(message) do
     _ = Logger.info("💡 #{message} 💡")
   end
 
@@ -48,8 +48,8 @@ defmodule Tex.Util.Messages do
     _ = Logger.info("💽 #{message}")
   end
 
-  @spec download(binary) :: :ok
-  def download(message) when is_binary(message) do
+  @spec inbox(binary) :: :ok
+  def inbox(message) when is_binary(message) do
     _ = Logger.info("📥 #{message}")
   end
 
