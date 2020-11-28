@@ -1,4 +1,6 @@
 defmodule Tex.Util.Configuration do
+  @moduledoc false
+
   alias Tex.Types.Workspace
   alias Tex.Types.Error
 

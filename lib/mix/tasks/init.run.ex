@@ -1,4 +1,5 @@
 defmodule Mix.Tasks.Tex.Init do
+  @moduledoc false
   use Mix.Task
 
   alias Tex.Util.Messages

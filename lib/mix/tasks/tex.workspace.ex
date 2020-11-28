@@ -1,4 +1,5 @@
 defmodule Mix.Tasks.Tex.Workspace do
+  @moduledoc false
   use Mix.Task
 
   alias Tex.Util

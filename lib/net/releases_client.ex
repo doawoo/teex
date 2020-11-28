@@ -1,4 +1,5 @@
 defmodule Tex.Net.ReleasesClient do
+  @moduledoc false
   use Tesla, only: [:get]
 
   plug Tesla.Middleware.BaseUrl, "https://hex.pm/api/packages/"

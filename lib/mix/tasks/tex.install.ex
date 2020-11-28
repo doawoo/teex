@@ -1,4 +1,5 @@
 defmodule Mix.Tasks.Tex.Install do
+  @moduledoc false
   use Mix.Task
 
   alias Tex.Types.Library

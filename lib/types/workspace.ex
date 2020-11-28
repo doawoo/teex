@@ -1,4 +1,6 @@
 defmodule Tex.Types.Workspace do
+  @moduledoc false
+
   use TypedStruct
   use Tex.Util.StructBuilder
 

@@ -1,4 +1,5 @@
 defmodule Tex.Util.Messages do
+  @moduledoc false
   require Logger
 
   @spec info(binary) :: :ok

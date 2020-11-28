@@ -6,8 +6,10 @@ defmodule Tex.MixProject do
       app: :tex,
       version: "0.2.3",
       elixir: "~> 1.10",
+      source_url: "github.com/doawoo/tex",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
+      docs: docs(),
       description: description(),
       package: package(),
       escript: escript()
@@ -45,5 +47,9 @@ defmodule Tex.MixProject do
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:tesla, "~> 1.3.0"}
     ]
+  end
+
+  defp docs do
+    [extras: ["README.md"], main: "readme"]
   end
 end

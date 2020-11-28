@@ -1,4 +1,6 @@
 defmodule Tex.Pipeline.Install do
+  @moduledoc false
+
   alias Tex.Types.Library
   alias Tex.Types.Workspace
   alias Tex.Types.Error

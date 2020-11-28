@@ -1,4 +1,6 @@
 defmodule Tex.Pipeline.Download do
+  @moduledoc false
+
   alias Tex.Types.Library
   alias Tex.Types.Error
 

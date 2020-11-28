@@ -1,4 +1,5 @@
 defmodule Mix.Tasks.Tex.Uninstall do
+  @moduledoc false
   use Mix.Task
 
   alias Tex.Types.Workspace

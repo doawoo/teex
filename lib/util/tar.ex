@@ -1,4 +1,5 @@
 defmodule Tex.Util.Tar do
+  @moduledoc false
   @spec extract_tar_to_memory(binary) :: :error | {:ok, [{[any], binary}]}
   def extract_tar_to_memory(tar_file) when is_binary(tar_file) do
     case :erl_tar.extract(tar_file, [:compressed, :memory]) do

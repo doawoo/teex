@@ -5,6 +5,7 @@ defmodule Tex do
   alias Tex.Types.Workspace
   alias Tex.Types.Library
 
+  @doc false
   def main(args) do
     {cmd, rest} = List.pop_at(args, 0)
     case cmd do
@@ -16,6 +17,13 @@ defmodule Tex do
     end
   end
 
+  @spec workspace(binary) :: :ok | {:error, <<_::256>>}
+  @doc """
+  Use this function to load a tex workspace during an IEx session or during an Elixir session
+  that your ~/.tex.exs file has been loaded into.
+
+  This will load the code paths required to run the libraries installed inside the specified workspace.
+  """
   def workspace(name) when is_binary(name) do
     workspace_name = Util.clean_workspace_name(name)
     full_path = Util.compute_workspace_path(workspace_name)
