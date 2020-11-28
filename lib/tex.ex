@@ -10,8 +10,9 @@ defmodule Tex do
     case cmd do
       "init" -> Mix.Tasks.Tex.Init.run(rest)
       "install" -> Mix.Tasks.Tex.Install.run(rest)
+      "uninstall" -> Mix.Tasks.Tex.Uninstall.run(rest)
       "workspace" -> Mix.Tasks.Tex.Workspace.run(rest)
-      _ -> IO.puts("Not sure what you mean, try one of these commands: ['init', 'install', 'workspace']")
+      _ -> IO.puts("Not sure what you mean, try one of these commands: ['init', 'install', 'uninstall', 'workspace']")
     end
   end
 
