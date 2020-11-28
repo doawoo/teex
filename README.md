@@ -91,3 +91,15 @@ You can use the above script simply by running:
 chmod +x my_script.exs
 ./my_script.exs > output.json
 ```
+
+## Command List
+
+`tex init` - Creates the initial `.tex.exs` shim file to be used in IEx sessions.
+
+`tex workspace create my_workspace` - Creates a workspace
+
+`tex workspace destroy my_workspace` - Destroy a workspace (this can't be undone!)
+
+`tex install [hex_lib_name] 1.0.0 --workspace my_workspace` - Install a Hex.pm library by name into a workspace at the specified version
+
+`tex uninstall [hex_lib_name] --workspace my_workspace` - Remove a Hex.pm library by name from a workspace
