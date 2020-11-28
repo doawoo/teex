@@ -1,5 +1,9 @@
 # Tex
 
+[![Elixir Escript Build Test](https://github.com/doawoo/tex/workflows/Elixir%20Escript%20Build%20Test/badge.svg)](https://github.com/doawoo/tex/actions)
+[![Hex Tex](https://img.shields.io/hexpm/v/tex.svg)](https://hex.pm/packages/tex)
+[![HexDocs Tex](https://img.shields.io/badge/hexdocs.pm-tex-blue)](https://hexdocs.pm/tex/)
+
 **Use Elixir like a scripting language, across your system**
 
 **HEY THERE!** This is a very hacky and experimental tool that solves a weird problem. I really wanted to be able to use Elixir like python all over my system environment. But in order to use any of the Hex packages, I needed a proper Mix project. Tex negates that by shimming into your IEx sessions, and injecting the code paths of libraries you install inside your workspaces.

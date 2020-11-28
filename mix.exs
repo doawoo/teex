@@ -4,7 +4,7 @@ defmodule Tex.MixProject do
   def project do
     [
       app: :tex,
-      version: "0.2.3",
+      version: "0.3.0",
       elixir: "~> 1.10",
       source_url: "github.com/doawoo/tex",
       start_permanent: Mix.env() == :prod,
@@ -36,7 +36,7 @@ defmodule Tex.MixProject do
   end
 
   defp description() do
-    "Tex is a way to provision quick and disposable elixir/hex workspaces"
+    "Use Elixir as a scripting language with Hex packages, anywhere on your system. No Mix project required!"
   end
 
   # Run "mix help deps" to learn about dependencies.
