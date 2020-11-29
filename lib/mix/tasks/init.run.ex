@@ -22,10 +22,10 @@ defmodule Mix.Tasks.Teex.Init do
 
   def run(_) do
     home = System.user_home!()
-    full_path = Path.join(home, ".Teex.exs")
+    full_path = Path.join(home, ".teex.exs")
     File.write!(full_path, init_file())
 
-    Messages.sparkle("Installed ~/.Teex.exs")
+    Messages.sparkle("Installed ~/.teex.exs")
     Messages.lights("IMPORTANT! Add the following to the top of your ~/.iex.exs:")
     Messages.lights("c \"#{full_path}\"")
   end

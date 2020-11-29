@@ -20,7 +20,7 @@ defmodule Teex do
   @spec workspace(binary) :: :ok | {:error, <<_::256>>}
   @doc """
   Use this function to load a Teex workspace during an IEx session or during an Elixir session
-  that your ~/.Teex.exs file has been loaded into.
+  that your ~/.teex.exs file has been loaded into.
 
   This will load the code paths required to run the libraries installed inside the specified workspace.
   """
