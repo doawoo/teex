@@ -12,6 +12,8 @@ This has no tests yet. This is basically in-dev. Here be dragons!
 
 Contributions appreciated :D
 
+FYI: This was renamed from "Tex" to avoid confusion with TeX -- This project is now called Teex! The GIFs below might still mention `tex` -- just replace that in your commands with `teex` 
+
 ## How To Use
 
 ### Install
