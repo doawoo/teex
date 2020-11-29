@@ -28,7 +28,7 @@ Install the escript using mix: `mix escript.install hex teex`
 
 ![init](https://user-images.githubusercontent.com/61982076/100492322-ba843980-30df-11eb-9016-cd4f3a211750.gif)
 
-Do what it says! Paste the line it generates bewteen the lightbulbs into your `~/.iex.exs` file!
+Do what it says! Paste the line it generates between the lightbulbs into your `~/.iex.exs` file!
 
 It should look something like: `c /path/to/your/home/.teex.exs`
 
