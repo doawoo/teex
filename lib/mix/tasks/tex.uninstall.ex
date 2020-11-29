@@ -14,7 +14,7 @@ defmodule Mix.Tasks.Teex.Uninstall do
       {[workspace: workspace_name], [name]} -> kickoff_uninstall(workspace_name, name)
       _ ->
         IO.puts("Not sure what you mean!\n")
-        IO.puts("\tUsage:\n\tTeex uninstall jason --workspace [target_workspace name]")
+        IO.puts("\tUsage:\n\tteex uninstall jason --workspace [target_workspace name]")
     end
   end
 

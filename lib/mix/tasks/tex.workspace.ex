@@ -56,8 +56,8 @@ defmodule Mix.Tasks.Teex.Workspace do
 
   def run(_) do
     IO.puts("Not sure what you mean!\n")
-    IO.puts("\tUsage:\n\tTeex workspace create [new_workspace_name]")
-    IO.puts("\tTeex workspace destroy [workspace_name]")
+    IO.puts("\tUsage:\n\tteex workspace create [new_workspace_name]")
+    IO.puts("\tteex workspace destroy [workspace_name]")
     :ok
   end
 end

@@ -12,7 +12,7 @@ defmodule Mix.Tasks.Teex.Init do
     #{@escript_util}
 
     Mix.path_for(:escripts)
-    |> Path.join("Teex")
+    |> Path.join("teex")
     |> Teex.Util.Escript.extract_modules(#{@modules_to_shim})
     |> Teex.Util.Escript.load_module_object_code()
 

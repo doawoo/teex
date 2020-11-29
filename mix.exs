@@ -4,7 +4,7 @@ defmodule Teex.MixProject do
   def project do
     [
       app: :teex,
-      version: "0.4.1",
+      version: "0.4.3",
       elixir: "~> 1.10",
       source_url: "github.com/doawoo/teex",
       start_permanent: Mix.env() == :prod,
