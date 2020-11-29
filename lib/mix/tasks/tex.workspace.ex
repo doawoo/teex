@@ -1,10 +1,10 @@
-defmodule Mix.Tasks.Tex.Workspace do
+defmodule Mix.Tasks.Teex.Workspace do
   @moduledoc false
   use Mix.Task
 
-  alias Tex.Util
-  alias Tex.Util.Messages
-  alias Tex.Types.Workspace
+  alias Teex.Util
+  alias Teex.Util.Messages
+  alias Teex.Types.Workspace
 
   def run(["create", name]) do
     full_path = Util.compute_workspace_path(name)
@@ -56,8 +56,8 @@ defmodule Mix.Tasks.Tex.Workspace do
 
   def run(_) do
     IO.puts("Not sure what you mean!\n")
-    IO.puts("\tUsage:\n\ttex workspace create [new_workspace_name]")
-    IO.puts("\ttex workspace destroy [workspace_name]")
+    IO.puts("\tUsage:\n\tTeex workspace create [new_workspace_name]")
+    IO.puts("\tTeex workspace destroy [workspace_name]")
     :ok
   end
 end

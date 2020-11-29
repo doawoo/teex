@@ -1,12 +1,12 @@
-defmodule Mix.Tasks.Tex.Uninstall do
+defmodule Mix.Tasks.Teex.Uninstall do
   @moduledoc false
   use Mix.Task
 
-  alias Tex.Types.Workspace
+  alias Teex.Types.Workspace
 
-  alias Tex.Util
-  alias Tex.Util.Messages
-  alias Tex.Util.Configuration
+  alias Teex.Util
+  alias Teex.Util.Messages
+  alias Teex.Util.Configuration
 
   def run(args) do
     OptionParser.parse!(args, strict: [workspace: :string, name: :string, version: :string])
@@ -14,7 +14,7 @@ defmodule Mix.Tasks.Tex.Uninstall do
       {[workspace: workspace_name], [name]} -> kickoff_uninstall(workspace_name, name)
       _ ->
         IO.puts("Not sure what you mean!\n")
-        IO.puts("\tUsage:\n\ttex uninstall jason --workspace [target_workspace name]")
+        IO.puts("\tUsage:\n\tTeex uninstall jason --workspace [target_workspace name]")
     end
   end
 

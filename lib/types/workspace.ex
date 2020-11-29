@@ -1,10 +1,10 @@
-defmodule Tex.Types.Workspace do
+defmodule Teex.Types.Workspace do
   @moduledoc false
 
   use TypedStruct
-  use Tex.Util.StructBuilder
+  use Teex.Util.StructBuilder
 
-  alias Tex.Types.Library
+  alias Teex.Types.Library
 
   typedstruct do
     field :name, String.t(), enforce: true, default: ""

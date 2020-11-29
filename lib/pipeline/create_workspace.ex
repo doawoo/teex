@@ -1,14 +1,14 @@
-defmodule Tex.Pipeline.CreateWorkspace do
+defmodule Teex.Pipeline.CreateWorkspace do
   @moduledoc false
 
-  alias Tex.Types.Workspace
-  alias Tex.Types.Error
+  alias Teex.Types.Workspace
+  alias Teex.Types.Error
 
-  alias Tex.Util
+  alias Teex.Util
 
   @spec run(any) :: {:error, atom} | {:ok, Workspace.t()}
   def run(workspace_name) do
-    workspace_path = Path.join(Util.get_tex_home(), workspace_name)
+    workspace_path = Path.join(Util.get_Teex_home(), workspace_name)
     new_workspace = Workspace.build(name: workspace_name, path: workspace_path)
     with :ok <- File.mkdir_p(workspace_path),
     {:ok, workspace} <- Util.Configuration.save_workspace(new_workspace) do

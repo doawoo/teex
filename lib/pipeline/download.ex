@@ -1,13 +1,13 @@
-defmodule Tex.Pipeline.Download do
+defmodule Teex.Pipeline.Download do
   @moduledoc false
 
-  alias Tex.Types.Library
-  alias Tex.Types.Error
+  alias Teex.Types.Library
+  alias Teex.Types.Error
 
-  alias Tex.Net.ReleasesClient
-  alias Tex.Net.TarClient
+  alias Teex.Net.ReleasesClient
+  alias Teex.Net.TarClient
 
-  @spec run(Tex.Types.Library.t()) ::
+  @spec run(Teex.Types.Library.t()) ::
           {:error, Error.t()}
           | {:ok, Library.t()}
   def run(%Library{} = lib) do

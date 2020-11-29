@@ -1,11 +1,11 @@
-defmodule Tex.Util.Configuration do
+defmodule Teex.Util.Configuration do
   @moduledoc false
 
-  alias Tex.Types.Workspace
-  alias Tex.Types.Error
+  alias Teex.Types.Workspace
+  alias Teex.Types.Error
 
-  @spec save_workspace(Tex.Types.Workspace.t()) ::
-          {:error, %{:__struct__ => atom, optional(atom) => any}} | {:ok, Tex.Types.Workspace.t()}
+  @spec save_workspace(Teex.Types.Workspace.t()) ::
+          {:error, %{:__struct__ => atom, optional(atom) => any}} | {:ok, Teex.Types.Workspace.t()}
   def save_workspace(%Workspace{} = workspace) do
     config_path = Path.join(workspace.path, "workspace.config")
     with true <- File.dir?(workspace.path),
@@ -19,8 +19,8 @@ defmodule Tex.Util.Configuration do
       end
   end
 
-  @spec load_workspace(Tex.Types.Workspace.t()) ::
-          {:error, %{:__struct__ => atom, optional(atom) => any}} | {:ok, Tex.Types.Workspace.t()}
+  @spec load_workspace(Teex.Types.Workspace.t()) ::
+          {:error, %{:__struct__ => atom, optional(atom) => any}} | {:ok, Teex.Types.Workspace.t()}
   def load_workspace(%Workspace{} = workspace) do
     config_path = Path.join(workspace.path, "workspace.config")
     with true <- File.exists?(config_path),

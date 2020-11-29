@@ -1,26 +1,26 @@
-defmodule Tex do
-  alias Tex.Util
-  alias Tex.Util.Configuration
+defmodule Teex do
+  alias Teex.Util
+  alias Teex.Util.Configuration
 
-  alias Tex.Types.Workspace
-  alias Tex.Types.Library
+  alias Teex.Types.Workspace
+  alias Teex.Types.Library
 
   @doc false
   def main(args) do
     {cmd, rest} = List.pop_at(args, 0)
     case cmd do
-      "init" -> Mix.Tasks.Tex.Init.run(rest)
-      "install" -> Mix.Tasks.Tex.Install.run(rest)
-      "uninstall" -> Mix.Tasks.Tex.Uninstall.run(rest)
-      "workspace" -> Mix.Tasks.Tex.Workspace.run(rest)
+      "init" -> Mix.Tasks.Teex.Init.run(rest)
+      "install" -> Mix.Tasks.Teex.Install.run(rest)
+      "uninstall" -> Mix.Tasks.Teex.Uninstall.run(rest)
+      "workspace" -> Mix.Tasks.Teex.Workspace.run(rest)
       _ -> IO.puts("Not sure what you mean, try one of these commands: ['init', 'install', 'uninstall', 'workspace']")
     end
   end
 
   @spec workspace(binary) :: :ok | {:error, <<_::256>>}
   @doc """
-  Use this function to load a tex workspace during an IEx session or during an Elixir session
-  that your ~/.tex.exs file has been loaded into.
+  Use this function to load a Teex workspace during an IEx session or during an Elixir session
+  that your ~/.Teex.exs file has been loaded into.
 
   This will load the code paths required to run the libraries installed inside the specified workspace.
   """

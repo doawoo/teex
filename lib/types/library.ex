@@ -1,8 +1,8 @@
-defmodule Tex.Types.Library do
+defmodule Teex.Types.Library do
   @moduledoc false
 
   use TypedStruct
-  use Tex.Util.StructBuilder
+  use Teex.Util.StructBuilder
 
   typedstruct do
     field :name, String.t(), enforce: true, default: ""

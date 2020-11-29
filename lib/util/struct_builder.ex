@@ -1,8 +1,8 @@
-defmodule Tex.Util.StructBuilder do
+defmodule Teex.Util.StructBuilder do
   @moduledoc false
   defmacro __using__(_opts) do
     quote do
-      import Tex.Util.StructBuilder
+      import Teex.Util.StructBuilder
     end
   end
 

@@ -1,4 +1,4 @@
-defmodule Tex.Util.Messages do
+defmodule Teex.Util.Messages do
   @moduledoc false
   require Logger
 

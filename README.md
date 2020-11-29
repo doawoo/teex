@@ -1,12 +1,12 @@
-# Tex
+# Teex
 
-[![Elixir Escript Build Test](https://github.com/doawoo/tex/workflows/Elixir%20Escript%20Build%20Test/badge.svg)](https://github.com/doawoo/tex/actions)
-[![Hex Tex](https://img.shields.io/hexpm/v/tex.svg)](https://hex.pm/packages/tex)
-[![HexDocs Tex](https://img.shields.io/badge/hexdocs.pm-tex-blue)](https://hexdocs.pm/tex/)
+[![Elixir Escript Build Test](https://github.com/doawoo/teex/workflows/Elixir%20Escript%20Build%20Test/badge.svg)](https://github.com/doawoo/teex/actions)
+[![Hex Teex](https://img.shields.io/hexpm/v/teex.svg)](https://hex.pm/packages/teex)
+[![HexDocs Teex](https://img.shields.io/badge/hexdocs.pm-teex-blue)](https://hexdocs.pm/teex/)
 
 **Use Elixir like a scripting language, across your system**
 
-**HEY THERE!** This is a very hacky and experimental tool that solves a weird problem. I really wanted to be able to use Elixir like python all over my system environment. But in order to use any of the Hex packages, I needed a proper Mix project. Tex negates that by shimming into your IEx sessions, and injecting the code paths of libraries you install inside your workspaces.
+**HEY THERE!** This is a very hacky and experimental tool that solves a weird problem. I really wanted to be able to use Elixir like python all over my system environment. But in order to use any of the Hex packages, I needed a proper Mix project. Teex negates that by shimming into your IEx sessions, and injecting the code paths of libraries you install inside your workspaces.
 
 This has no tests yet. This is basically in-dev. Here be dragons!
 
@@ -16,19 +16,19 @@ Contributions appreciated :D
 
 ### Install
 
-Install the escript using mix: `mix escript.install hex tex`
+Install the escript using mix: `mix escript.install hex teex`
 
-**IMPORTANT:** Ensure you add your escript directory to your `PATH` otherwise you won't be able to use the `tex` command from anywhere!
+**IMPORTANT:** Ensure you add your escript directory to your `PATH` otherwise you won't be able to use the `teex` command from anywhere!
 
-(If you're using asdf-vm it may be something like "/home/USER/.asdf/installs/elixir/VERSION/.mix/escripts/", you'll probably want to set your global elixir properly before installing tex)
+(If you're using asdf-vm it may be something like "/home/USER/.asdf/installs/elixir/VERSION/.mix/escripts/", you'll probably want to set your global elixir properly before installing teex)
 
-#### Run the `tex init` command
+#### Run the `teex init` command
 
 ![init](https://user-images.githubusercontent.com/61982076/100492322-ba843980-30df-11eb-9016-cd4f3a211750.gif)
 
 Do what it says! Paste the line it generates bewteen the lightbulbs into your `~/.iex.exs` file!
 
-It should look something like: `c /path/to/your/home/.tex.exs`
+It should look something like: `c /path/to/your/home/.teex.exs`
 
 ### Create A Workspace
 
@@ -42,12 +42,12 @@ It should look something like: `c /path/to/your/home/.tex.exs`
 
 ![usage](https://user-images.githubusercontent.com/61982076/100492318-b5bf8580-30df-11eb-9e85-593e89563389.gif)
 
-You can load any workspace using `Tex.workspace/1` with a string of your workspace name. It will load up the code paths for all your installed libraries in that workspace!
+You can load any workspace using `Teex.workspace/1` with a string of your workspace name. It will load up the code paths for all your installed libraries in that workspace!
 
 
 ## Advanced Script Usage!
 
-You can even use Elixir and Tex together to create useful scripts that are usable anywhere on your system.
+You can even use Elixir and Teex together to create useful scripts that are usable anywhere on your system.
 
 Here's an example script that loads a workspace, uses Jason, and prints the string to STDOUT
 
@@ -57,12 +57,12 @@ Here's an example script that loads a workspace, uses Jason, and prints the stri
 ## ^ include the above so you can simply do:
 ## ./my_script.exs
 
-## Load your tex shim file
-Code.require_file "/home/aaron/.tex.exs"
+## Load your teex shim file
+Code.require_file "/home/aaron/.teex.exs"
 
-## Pick your tex workspace
+## Pick your teex workspace
 ## Let's assume this workspace has Jason installed in it
-Tex.workspace "test"
+Teex.workspace "test"
 
 ## Do some stuff!
 ## Let's encode a map to JSON and output it to STDOUT
@@ -94,12 +94,12 @@ chmod +x my_script.exs
 
 ## Command List
 
-`tex init` - Creates the initial `.tex.exs` shim file to be used in IEx sessions.
+`teex init` - Creates the initial `.teex.exs` shim file to be used in IEx sessions.
 
-`tex workspace create my_workspace` - Creates a workspace
+`teex workspace create my_workspace` - Creates a workspace
 
-`tex workspace destroy my_workspace` - Destroy a workspace (this can't be undone!)
+`teex workspace destroy my_workspace` - Destroy a workspace (this can't be undone!)
 
-`tex install [hex_lib_name] 1.0.0 --workspace my_workspace` - Install a Hex.pm library by name into a workspace at the specified version
+`teex install [hex_lib_name] 1.0.0 --workspace my_workspace` - Install a Hex.pm library by name into a workspace at the specified version
 
-`tex uninstall [hex_lib_name] --workspace my_workspace` - Remove a Hex.pm library by name from a workspace
+`teex uninstall [hex_lib_name] --workspace my_workspace` - Remove a Hex.pm library by name from a workspace

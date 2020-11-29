@@ -1,8 +1,8 @@
-defmodule Tex.Types.Error do
+defmodule Teex.Types.Error do
   @moduledoc false
 
   use TypedStruct
-  use Tex.Util.StructBuilder
+  use Teex.Util.StructBuilder
 
   @type error_type :: :tarball | :download | :install | :workspace | :unknown
 

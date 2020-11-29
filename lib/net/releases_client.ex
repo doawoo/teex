@@ -1,9 +1,9 @@
-defmodule Tex.Net.ReleasesClient do
+defmodule Teex.Net.ReleasesClient do
   @moduledoc false
   use Tesla, only: [:get]
 
   plug Tesla.Middleware.BaseUrl, "https://hex.pm/api/packages/"
-  plug Tesla.Middleware.Headers, ["User-Agent": "TexClient"]
+  plug Tesla.Middleware.Headers, ["User-Agent": "TeexClient"]
 
   @spec get_release_info(binary, binary) :: {:error, any} | map
   def get_release_info(package, version) when is_binary(package) and is_binary(version) do

@@ -1,12 +1,12 @@
-defmodule Tex.Pipeline.Install do
+defmodule Teex.Pipeline.Install do
   @moduledoc false
 
-  alias Tex.Types.Library
-  alias Tex.Types.Workspace
-  alias Tex.Types.Error
+  alias Teex.Types.Library
+  alias Teex.Types.Workspace
+  alias Teex.Types.Error
 
-  alias Tex.Util.Messages
-  alias Tex.Util.Tar
+  alias Teex.Util.Messages
+  alias Teex.Util.Tar
 
   def run(%Library{tarball: nil}, _) do
     {:error, Error.build(type: :install, details: "Empty tarball passed into Install.run/2 pipeline")}

@@ -1,16 +1,16 @@
-defmodule Mix.Tasks.Tex.Install do
+defmodule Mix.Tasks.Teex.Install do
   @moduledoc false
   use Mix.Task
 
-  alias Tex.Types.Library
-  alias Tex.Types.Workspace
+  alias Teex.Types.Library
+  alias Teex.Types.Workspace
 
-  alias Tex.Pipeline.Download
-  alias Tex.Pipeline.Install
+  alias Teex.Pipeline.Download
+  alias Teex.Pipeline.Install
 
-  alias Tex.Util
-  alias Tex.Util.Messages
-  alias Tex.Util.Configuration
+  alias Teex.Util
+  alias Teex.Util.Messages
+  alias Teex.Util.Configuration
 
   def run(args) do
     OptionParser.parse!(args, strict: [workspace: :string, name: :string, version: :string])
@@ -18,7 +18,7 @@ defmodule Mix.Tasks.Tex.Install do
       {[workspace: workspace_name], [name, version]} -> kickoff_install(workspace_name, name, version)
       _ ->
         IO.puts("Not sure what you mean!\n")
-        IO.puts("\tUsage:\n\ttex install jason 1.2.1 --workspace [target_workspace name]")
+        IO.puts("\tUsage:\n\tTeex install jason 1.2.1 --workspace [target_workspace name]")
     end
   end
 

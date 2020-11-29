@@ -1,12 +1,12 @@
-defmodule Tex.MixProject do
+defmodule Teex.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :tex,
-      version: "0.3.3",
+      app: :teex,
+      version: "0.4.0",
       elixir: "~> 1.10",
-      source_url: "github.com/doawoo/tex",
+      source_url: "github.com/doawoo/teex",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       docs: docs(),
@@ -17,12 +17,12 @@ defmodule Tex.MixProject do
   end
 
   defp escript() do
-    [main_module: Tex]
+    [main_module: Teex]
   end
 
   defp package() do
     [
-      name: "tex",
+      name: "teex",
       licenses: ["MIT"],
       links: %{}
     ]

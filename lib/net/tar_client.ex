@@ -1,9 +1,9 @@
-defmodule Tex.Net.TarClient do
+defmodule Teex.Net.TarClient do
   @moduledoc false
 
   use Tesla, only: [:get]
 
-  alias Tex.Types.Error
+  alias Teex.Types.Error
 
   plug Tesla.Middleware.BaseUrl, "https://repo.hex.pm/tarballs/"
 

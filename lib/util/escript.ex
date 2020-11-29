@@ -1,4 +1,4 @@
-defmodule Tex.Util.Escript do
+defmodule Teex.Util.Escript do
   @moduledoc false
 
   def extract_modules(script_path, mod_names) when is_list(mod_names) do
