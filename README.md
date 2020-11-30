@@ -30,7 +30,7 @@ Install the escript using mix: `mix escript.install hex teex`
 
 Do what it says! Paste the line it generates between the lightbulbs into your `~/.iex.exs` file!
 
-It should look something like: `c /path/to/your/home/.teex.exs`
+It should look something like: `c "/path/to/your/home/.teex.exs"`
 
 ### Create A Workspace
 
