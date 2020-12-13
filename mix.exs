@@ -1,12 +1,14 @@
 defmodule Teex.MixProject do
   use Mix.Project
 
+  @source_url "https://github.com/doawoo/teex"
+
   def project do
     [
       app: :teex,
       version: "0.4.3",
       elixir: "~> 1.10",
-      source_url: "github.com/doawoo/teex",
+      source_url: @source_url,
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       docs: docs(),
@@ -24,11 +26,11 @@ defmodule Teex.MixProject do
     [
       name: "teex",
       licenses: ["MIT"],
-      links: %{}
+      maintainers: ["Digit"],
+      links: %{"GitHub" => @source_url}
     ]
   end
 
-  # Run "mix help compile.app" to learn about applications.
   def application do
     [
       extra_applications: [:logger]
@@ -39,7 +41,6 @@ defmodule Teex.MixProject do
     "Use Elixir as a scripting language with Hex packages, anywhere on your system. No Mix project required!"
   end
 
-  # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
       {:typed_struct, "0.2.1"},
