@@ -13,6 +13,7 @@ defmodule Teex do
       "install" -> Mix.Tasks.Teex.Install.run(rest)
       "uninstall" -> Mix.Tasks.Teex.Uninstall.run(rest)
       "workspace" -> Mix.Tasks.Teex.Workspace.run(rest)
+      "list" -> Mix.Tasks.Teex.List.run(rest)
       _ -> IO.puts("Not sure what you mean, try one of these commands: ['init', 'install', 'uninstall', 'workspace']")
     end
   end

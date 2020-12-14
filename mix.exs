@@ -6,7 +6,7 @@ defmodule Teex.MixProject do
   def project do
     [
       app: :teex,
-      version: "0.4.3",
+      version: "0.5.0",
       elixir: "~> 1.10",
       source_url: @source_url,
       start_permanent: Mix.env() == :prod,
